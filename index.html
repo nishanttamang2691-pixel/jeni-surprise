@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blush Jeni Heheh 💗</title>
+  <style>
+    :root {
+      --purple: #4a1767;
+      --pink: #ff6f9f;
+      --lav: #f4e8ff;
+      --deep: #7b2c91
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: #3d174d;
+      background: linear-gradient(135deg, #fff0f8, #e9e0ff)
+    }
+
+    .card {
+      width: min(720px, 100%);
+      padding: clamp(24px, 5vw, 48px);
+      background: #ffffffed;
+      border-radius: 36px;
+      text-align: center;
+      box-shadow: 0 22px 65px #67308022;
+      position: relative;
+      overflow: hidden
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 7px 13px;
+      background: #f4e3ff;
+      color: #8745a0;
+      border-radius: 99px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase
+    }
+
+    h1 {
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      line-height: 1.12;
+      color: var(--purple);
+      margin: 16px 0 10px
+    }
+
+    p {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      line-height: 1.6
+    }
+
+    .emoji {
+      font-size: clamp(5rem, 18vw, 8rem);
+      margin: 12px 0;
+      filter: drop-shadow(0 8px 6px #5c246b22);
+      animation: bob 2s ease-in-out infinite
+    }
+
+    @keyframes bob {
+      50% {
+        transform: translateY(-8px) rotate(3deg)
+      }
+    }
+
+    button {
+      font: inherit;
+      font-weight: 800;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 22px;
+      cursor: pointer;
+      transition: transform .2s, font-size .25s, padding .25s
+    }
+
+    .primary {
+      background: linear-gradient(90deg, #923bb0, #d64f94);
+      color: white;
+      box-shadow: 0 8px 20px #9e4cb833
+    }
+
+    .secondary {
+      background: #f0e3f8;
+      color: #6c327d
+    }
+
+    button:hover {
+      filter: brightness(1.04)
+    }
+
+    .screen {
+      display: none;
+      animation: appear .35s ease
+    }
+
+    .screen.active {
+      display: block
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(10px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 20px 0 8px;
+      min-height: 65px
+    }
+
+    .note {
+      font-size: .86rem;
+      color: #967ba2
+    }
+
+    #yesBtn {
+      background: linear-gradient(90deg, #ff5f91, #ba4fbd);
+      color: white;
+      box-shadow: 0 8px 20px #d85b992e;
+      transform-origin: center
+    }
+
+    #noBtn {
+      background: #eee5f4;
+      color: #60376c
+    }
+
+    #finalText {
+      font-size: clamp(1.4rem, 5vw, 2.3rem);
+      font-weight: 900;
+      color: #a02d83
+    }
+
+    .sparkle {
+      position: absolute;
+      opacity: .7;
+      animation: twinkle 2s infinite
+    }
+
+    @keyframes twinkle {
+      50% {
+        transform: scale(1.3) rotate(18deg)
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      top: -30px;
+      z-index: 5;
+      pointer-events: none;
+      animation: fall linear forwards
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: .9
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <span class="sparkle" style="top:10%;left:8%">✨</span><span class="sparkle"
+      style="top:17%;right:9%;animation-delay:.7s">💖</span>
+    <section id="s0" class="screen active">
+      <div class="pill">Secret mission for Jeni</div>
+      <h1>A Little Surprise 🎁</h1>
+      <p>Jeni, a tiny suspicious gift has arrived. Click it to begin. The budget was small, but the drama budget is
+        unlimited.</p>
+      <button class="giftButton" id="openBtn" aria-label="Open the gift" style="background:transparent;padding:0">
+        <div class="emoji">🎁</div>
+      </button>
+      <p class="note">Tap the gift. No vampires were consulted during production.</p>
+    </section>
+    <section id="s1" class="screen">
+      <div class="pill">Round 1: Spooky but cute</div>
+      <h1>Vampire 🧛‍♂️</h1>
+      <div class="emoji">🧛‍♂️</div>
+      <p>A vampire saw you and said, “I came for blood… but your attitude has drained my energy instead.” Then he
+        politely went home to drink tomato juice. 🍅</p>
+      <button class="primary next" data-next="s2">Next 👀</button>
+    </section>
+    <section id="s2" class="screen">
+      <div class="pill">Round 2: Local legend</div>
+      <h1>Chimkandi 👻</h1>
+      <div class="emoji">👻</div>
+      <p>At midnight, Chimkandi appeared and tried to scare you. You stared back so confidently that the ghost screamed,
+        “Sorry, did I disturb your main-character moment?” and vanished. 😭</p>
+      <button class="primary next" data-next="s3">Next, if you dare 😈</button>
+    </section>
+    <section id="s3" class="screen">
+      <div class="pill">Round 3: Bhoootiya</div>
+      <h1>Bhoootiya 👹</h1>
+      <div class="emoji">👹</div>
+      <p>The Bhoootiya prepared a terrifying speech. You said, “Can you make it quick? I have important business being
+        fabulous.” The Bhoootiya resigned immediately and started a bakery. 🥐</p>
+      <button class="primary next" data-next="s4">One more thing 💗</button>
+    </section>
+    <section id="s4" class="screen">
+      <div class="pill">Official review</div>
+      <h1>You Are Good 💖</h1>
+      <div class="emoji">🥹💐</div>
+      <p>After a full investigation, the ghosts, vampires, and one confused bakery owner agree: you are funny, special,
+        and genuinely lovely. Even the spooky committee gave you five stars. ⭐⭐⭐⭐⭐</p>
+      <button class="primary next" data-next="s5">Okay… what’s next? 🙈</button>
+    </section>
+    <section id="s5" class="screen">
+      <div class="pill">Final boss unlocked</div>
+      <h1>Jeni, I Will Win This 😌</h1>
+      <div class="emoji">🏆💗</div>
+      <p>I have one very important question. Choose wisely. The button committee is watching.</p>
+      <div class="actions">
+        <button id="yesBtn">YES 💖</button>
+        <button id="noBtn">NO 🙄</button>
+      </div>
+      <p class="note" id="buttonHint">Don't be shy, Jeni heheh. 😏</p>
+    </section>
+    <section id="s6" class="screen">
+      <div class="pill">MISSION ACCOMPLISHED</div>
+      <div class="emoji">🥳🏆💗</div>
+      <h1 id="finalText">YAY! I WON IN THIS UNIVERSE! 🌌</h1>
+      <p>Blush Jeni heheh 🙈💖 The vampire is clapping, Chimkandi is crying, and Bhoootiya is baking a victory cake.</p>
+      <p>Official result: one smile unlocked, one tiny victory celebrated, and unlimited silly energy sent your way. ✨
+      </p>
+      <button class="secondary" id="againBtn">Replay the chaos 🔁</button>
+    </section>
+    <div class="note" style="margin-top:20px">Made with affection, nonsense, and questionable ghost management. 👻</div>
+  </main>
+  <script>
+    const screens = [...document.querySelectorAll('.screen')];
+    function go(id) { screens.forEach(s => s.classList.toggle('active', s.id === id)); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+    function confetti(n = 65) { const bits = ['💖', '✨', '🎉', '⭐', '🥳', '💗', '👻']; for (let i = 0; i < n; i++) { const e = document.createElement('span'); e.className = 'confetti'; e.textContent = bits[Math.floor(Math.random() * bits.length)]; e.style.left = Math.random() * 100 + 'vw'; e.style.fontSize = (14 + Math.random() * 17) + 'px'; e.style.animationDuration = (2.4 + Math.random() * 2.5) + 's'; e.style.animationDelay = Math.random() * .3 + 's'; document.body.appendChild(e); setTimeout(() => e.remove(), 5200); } }
+    document.getElementById('openBtn').addEventListener('click', () => { go('s1'); confetti(30) });
+    document.querySelectorAll('[data-next]').forEach(b => b.addEventListener('click', () => { go(b.dataset.next); confetti(15) }));
+    let noCount = 0, yesScale = 1;
+    const yes = document.getElementById('yesBtn'), no = document.getElementById('noBtn'), hint = document.getElementById('buttonHint');
+    no.addEventListener('click', () => {
+      noCount++; yesScale = Math.min(1 + noCount * .22, 3.8);
+      yes.style.transform = `scale(${yesScale})`;
+      yes.style.padding = `${13 + noCount * 2}px ${22 + noCount * 5}px`;
+      hint.textContent = ['Hmm. The YES button has started training. 😌', 'Are you sure? YES is getting stronger. 💪', 'The NO button is making a questionable decision. 😂', 'Jeni, look at that enormous YES. It has dreams. 🌟', 'The universe is clearly rooting for YES now. 🌌'][Math.min(noCount - 1, 4)];
+      if (noCount >= 5) { no.textContent = 'NO (still trying?) 😭'; }
+    });
+    yes.addEventListener('click', () => { go('s6'); confetti(110) });
+    document.getElementById('againBtn').addEventListener('click', () => { noCount = 0; yesScale = 1; yes.style.transform = 'scale(1)'; yes.style.padding = '13px 22px'; no.textContent = 'NO 🙄'; hint.textContent = 'Don\\'t be shy, Jeni heheh. 😏';go('s0');confetti(25)});
+  </script>
+</body>
+
+</html>
