@@ -18,8 +18,9 @@ button{font:inherit;font-weight:800;border:0;border-radius:999px;padding:13px 22
 .primary{background:linear-gradient(90deg,#923bb0,#d64f94);color:white;box-shadow:0 8px 20px #9e4cb833}
 .secondary{background:#f0e3f8;color:#6c327d}
 button:hover{filter:brightness(1.04)}
-.giftButton{position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.giftButton .emoji{pointer-events:none;user-select:none}
+.giftStage{position:relative;display:inline-grid;place-items:center;margin:12px 0;isolation:isolate}
+.giftArt{font-size:clamp(5rem,18vw,8rem);line-height:1.2;filter:drop-shadow(0 8px 6px #5c246b22);animation:bob 2s ease-in-out infinite;pointer-events:none;user-select:none}
+.giftButton{position:absolute;inset:0;z-index:10;display:block;width:100%;height:100%;padding:0!important;margin:0;border:0;border-radius:18px;background:transparent!important;opacity:0;cursor:pointer;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:transparent;color:transparent;font-size:1px;box-shadow:none!important}
 .screen{display:none;animation:appear .35s ease}
 .screen.active{display:block}
 @keyframes appear{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -43,7 +44,7 @@ button:hover{filter:brightness(1.04)}
 <div class="pill">Secret mission for Jeni</div>
 <h1>A Little Surprise 🎁</h1>
 <p>Jeni, a suspicious little gift has arrived. Click it to begin. The budget was tiny, but the drama is sponsored by your own chaotic energy. 😂</p>
-<button type="button" class="giftButton" id="openBtn" aria-label="Open the gift" style="background:transparent;padding:0"><div class="emoji">🎁</div></button>
+<div class="giftStage"><div class="giftArt" aria-hidden="true">🎁</div><button type="button" class="giftButton" id="openBtn" aria-label="Open the gift" title="Open the gift">Next</button></div>
 <p class="note">Tap the gift. No vampires were consulted during production.</p>
 </section>
 <section id="s1" class="screen">
@@ -110,8 +111,7 @@ function go(id){screens.forEach(s=>s.classList.toggle('active',s.id===id));windo
 function confetti(n=65){const bits=['🌸','✨','🎉','⭐','🥳','🌸','👻'];for(let i=0;i<n;i++){const e=document.createElement('span');e.className='confetti';e.textContent=bits[Math.floor(Math.random()*bits.length)];e.style.left=Math.random()*100+'vw';e.style.fontSize=(14+Math.random()*17)+'px';e.style.animationDuration=(2.4+Math.random()*2.5)+'s';e.style.animationDelay=Math.random()*.3+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),5200);}}
 function openGift(){go('s1');confetti(30)}
 const openBtn=document.getElementById('openBtn');
-openBtn.addEventListener('click',openGift);
-openBtn.addEventListener('pointerup',(event)=>{if(event.pointerType==='touch'){event.preventDefault();openGift();}},{passive:false});
+openBtn.addEventListener('click',(event)=>{event.preventDefault();openGift();});
 document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>{go(b.dataset.next);confetti(15)}));
 let noCount=0,yesScale=1;
 const yes=document.getElementById('yesBtn'), no=document.getElementById('noBtn'), hint=document.getElementById('buttonHint');
